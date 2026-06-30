@@ -110,10 +110,7 @@ export default function Home() {
     <>
       {/* Hero — pulled up by mt-16 so its bg extends behind the fixed transparent header */}
       <section className="relative -mt-16 overflow-hidden">
-        <div
-          className="hero-orb pointer-events-none absolute -z-10 h-[520px] w-[520px] rounded-full bg-brand-500/[0.13] blur-[90px]"
-          style={{ top: "-8%", right: "0%", animation: "float-orb 9s ease-in-out infinite" }}
-        />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_70%_0%,rgba(16,185,129,0.14),transparent)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-28 sm:pb-24 sm:pt-36 lg:grid-cols-2">
           <div>
             <span

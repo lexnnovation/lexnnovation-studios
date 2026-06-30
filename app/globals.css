@@ -42,12 +42,6 @@ body {
   text-transform: uppercase;
 }
 
-@keyframes float-orb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(-28px, 22px) scale(1.06); }
-  66%       { transform: translate(18px, -16px) scale(0.94); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none !important;
@@ -59,9 +53,6 @@ body {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-  }
-  .hero-orb {
-    animation: none !important;
   }
 }
 
