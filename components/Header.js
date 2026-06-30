@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { navLinks } from "@/lib/site";
-import ObfuscatedEmail from "@/components/ObfuscatedEmail";
+import { usePathname } from "next/navigation";
+import { navLinks, site } from "@/lib/site";
 
 function SunIcon(props) {
   return (
@@ -36,9 +36,17 @@ function Logo({ onClick }) {
 export default function Header() {
   const [theme, setTheme] = useState("light");
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Lock body scroll + close on Escape while the full-screen menu is open.
@@ -64,24 +72,40 @@ export default function Header() {
   }
 
   const isDark = theme === "dark";
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const showBg = scrolled || !isHome;
 
   return (
     <>
       {/* backdrop-blur only on md+ — WebKit/Chrome mobile compositing breaks button hit-testing inside backdrop-filter elements */}
-      <header className="sticky top-0 z-50 border-b border-zinc-200/70 bg-white dark:border-zinc-800/70 dark:bg-zinc-950 md:bg-white/80 md:backdrop-blur md:dark:bg-zinc-950/80">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <header className="fixed inset-x-0 top-0 z-50">
+        {/* Background: always visible on non-home pages; fades in on scroll on home */}
+        <div className={`absolute inset-0 transition-all duration-300 ${
+          showBg
+            ? "border-b border-zinc-200/70 bg-white dark:border-zinc-800/70 dark:bg-zinc-950 md:bg-white/80 md:backdrop-blur md:dark:bg-zinc-950/80"
+            : ""
+        }`} />
+        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <Logo onClick={() => setOpen(false)} />
 
           <nav className="hidden items-center gap-8 md:flex">
-            {navLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-sm font-medium text-zinc-600 transition hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-              >
-                {l.label}
-              </Link>
-            ))}
+            {navLinks.map((l) => {
+              const isActive = !l.href.startsWith("/#") && l.href === pathname;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`text-sm font-medium transition ${
+                    isActive
+                      ? "text-zinc-950 dark:text-white"
+                      : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -92,12 +116,14 @@ export default function Header() {
             >
               {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
             </button>
-            <ObfuscatedEmail
-              subject="Reciva demo request"
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 sm:inline-block"
             >
               Book a demo
-            </ObfuscatedEmail>
+            </a>
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
@@ -135,16 +161,21 @@ export default function Header() {
           </div>
 
           <nav className="mt-10 flex flex-col gap-1">
-            {navLinks.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-zinc-100 py-4 font-display text-2xl font-bold tracking-tight dark:border-zinc-900"
-              >
-                {l.label}
-              </Link>
-            ))}
+            {navLinks.map((l) => {
+              const isActive = !l.href.startsWith("/#") && l.href === pathname;
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`border-b border-zinc-100 py-4 font-display text-2xl font-bold tracking-tight dark:border-zinc-900 ${
+                    isActive ? "text-brand-600" : ""
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="mt-auto flex flex-col gap-4 pb-8">
@@ -155,12 +186,14 @@ export default function Header() {
               <span>{isDark ? "Light mode" : "Dark mode"}</span>
               {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
             </button>
-            <ObfuscatedEmail
-              subject="Reciva demo request"
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-full bg-brand-600 px-5 py-4 text-center text-base font-semibold text-white transition hover:bg-brand-700"
             >
               Book a demo
-            </ObfuscatedEmail>
+            </a>
           </div>
         </div>
       </div>

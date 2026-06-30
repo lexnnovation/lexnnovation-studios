@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "WhatsApp AI Receptionist for your business | Reciva by Lexnnovation Studios",
+    default: "WhatsApp AI Receptionist for your business | Reciva AI by Lexnnovation Studios",
     template: `%s — ${site.name}`,
   },
   description: site.description,
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning className="flex min-h-full flex-col bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
         <Footer />
       </body>
     </html>
