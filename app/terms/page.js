@@ -24,6 +24,13 @@ export default function TermsPage() {
         leads. We may add, change, or discontinue features at any time.
       </p>
 
+      <h3>2.1 Account suspension and Meta compliance</h3>
+      <p>
+        We reserve the right to instantly terminate or suspend access to Reciva if a business tenant
+        violates the Meta WhatsApp Commerce Policy, uses the tool to distribute automated spam, or
+        breaches local regulatory messaging frameworks.
+      </p>
+
       <h2>3. Acceptable use</h2>
       <ul>
         <li>Do not use the Services for unlawful, harmful, or abusive purposes</li>
@@ -48,6 +55,15 @@ export default function TermsPage() {
       <p>
         The Services are provided "as is" without warranties of any kind. We do not guarantee that
         the Services will be uninterrupted, error-free, or fit for a particular purpose.
+      </p>
+
+      <h3>6.1 Conversational AI accuracy</h3>
+      <p>
+        Reciva is powered by advanced Large Language Models (LLMs). You acknowledge that AI responses
+        are generative and contextual. {site.name} provides no warranties regarding absolute textual
+        accuracy and shall not be held liable for system hallucinations, incorrect price generation,
+        or automated booking discrepancies. The business tenant retains final oversight over all
+        automated workflows.
       </p>
 
       <h2>7. Limitation of liability</h2>

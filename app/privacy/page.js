@@ -36,6 +36,14 @@ export default function PrivacyPage() {
         <li>To improve the quality and reliability of our service</li>
       </ul>
 
+      <h3>3.1 Multi-tenant separation</h3>
+      <p>
+        When we provide the WhatsApp AI Receptionist on behalf of our business clients ("Tenants"),
+        we process incoming end-user data strictly as a Data Processor. Data captured on a specific
+        business's WhatsApp line is dynamically isolated and is never shared across, or exposed to,
+        other tenant accounts on our platform.
+      </p>
+
       <h2>4. Data storage and security</h2>
       <p>
         Your data is stored securely using industry-standard practices, including encryption in
@@ -52,6 +60,13 @@ export default function PrivacyPage() {
         <li>Vercel — for website hosting</li>
       </ul>
       <p>Your use of WhatsApp is also governed by Meta's own privacy policy.</p>
+
+      <h3>5.1 AI data processing</h3>
+      <p>
+        Text logs sent to OpenAI via secure API calls are processed strictly to formulate real-time
+        answers. Under our enterprise API framework, this data is encrypted and is never utilized by
+        third parties to train public machine learning or foundational AI models.
+      </p>
 
       <h2>6. Data retention</h2>
       <p>
