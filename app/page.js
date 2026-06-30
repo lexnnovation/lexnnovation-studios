@@ -9,6 +9,8 @@ import {
   faqs,
 } from "@/lib/site";
 import { ReciaMark, FeatureIcon } from "@/components/Icons";
+import Reveal from "@/components/Reveal";
+
 const useCaseColors = [
   "bg-slate-900 dark:bg-slate-800",
   "bg-brand-600",
@@ -111,20 +113,32 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_70%_0%,rgba(16,185,129,0.14),transparent)]" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-28 sm:pb-24 sm:pt-36 lg:grid-cols-2">
           <div>
-            <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[11px] text-brand-700 dark:border-brand-800 dark:bg-brand-800/20 dark:text-brand-400">
+            <span
+              className="eyebrow reveal inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[11px] text-brand-700 dark:border-brand-800 dark:bg-brand-800/20 dark:text-brand-400"
+              style={{ animationDelay: "0s" }}
+            >
               Reciva AI · by Lexnnovation Studios
             </span>
-            <h1 className="display mt-6 text-[2.75rem] sm:text-6xl lg:text-[4.25rem]">
+            <h1
+              className="display reveal mt-6 text-[2.75rem] sm:text-6xl lg:text-[4.25rem]"
+              style={{ animationDelay: "0.1s" }}
+            >
               Your{" "}
               <span className="text-brand-600">WhatsApp AI Receptionist</span>{" "}
               that never sleeps.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p
+              className="mt-6 reveal max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
+              style={{ animationDelay: "0.2s" }}
+            >
               Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — it
               chats with your customers on WhatsApp, answers their questions, qualifies them, and captures
               every lead, 24/7. So your business keeps selling, even when you're off the clock.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div
+              className="mt-8 reveal flex flex-col gap-3 sm:flex-row"
+              style={{ animationDelay: "0.3s" }}
+            >
               <a
                 href={site.whatsapp}
                 target="_blank"
@@ -141,7 +155,9 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <ChatMockup />
+          <div className="reveal" style={{ animationDelay: "0.2s" }}>
+            <ChatMockup />
+          </div>
         </div>
       </section>
 
@@ -158,20 +174,20 @@ export default function Home() {
 
       {/* What Reciva AI does — 3-up */}
       <section id="reciva" className="mx-auto max-w-6xl px-5 py-20">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <ReciaMark />
           <h2 className="display mt-5 text-3xl sm:text-[2.5rem]">
             What a {product.category} does
           </h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">{product.description}</p>
-        </div>
+        </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {whatItDoes.map((f) => (
-            <div key={f.title} className="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+          {whatItDoes.map((f, i) => (
+            <Reveal key={f.title} delay={i * 100} className="rounded-2xl border border-zinc-200 bg-white p-6 transition hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
               <FeatureIcon name={f.icon} className="inline-grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600 [&_svg]:h-6 [&_svg]:w-6 dark:bg-brand-800/20 dark:text-brand-400" />
               <h3 className="mt-4 text-lg font-bold">{f.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{f.body}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -179,23 +195,23 @@ export default function Home() {
       {/* How it works — brand-green horizontal timeline */}
       <section id="how-it-works" className="bg-brand-600">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <div className="text-center">
+          <Reveal className="text-center">
             <span className="eyebrow text-[11px] text-brand-100">How it works</span>
             <h2 className="display mt-3 text-3xl text-white sm:text-[2.5rem]">From first message to closed deal</h2>
             <p className="mt-4 text-lg text-brand-100">Four steps. No new tools for you or your customers.</p>
-          </div>
+          </Reveal>
           <div className="relative mt-16">
             {/* connector line — visible on lg only */}
             <div className="absolute top-5 left-0 right-0 hidden h-px bg-white/30 lg:block" />
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-              {steps.map((s) => (
-                <div key={s.n} className="border-l-2 border-white/40 pl-5 lg:border-none lg:pl-0">
+              {steps.map((s, i) => (
+                <Reveal key={s.n} delay={i * 100} className="border-l-2 border-white/40 pl-5 lg:border-none lg:pl-0">
                   <div className="relative z-10 mb-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 ring-2 ring-white">
                     <span className="display text-sm text-white">{s.n}</span>
                   </div>
                   <h3 className="text-base font-bold text-white">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-brand-100">{s.body}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -204,22 +220,22 @@ export default function Home() {
 
       {/* Who it's for — bold coloured mosaic */}
       <section id="use-cases" className="mx-auto max-w-6xl px-5 py-20">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <span className="eyebrow text-[11px] text-brand-600">Who it's for</span>
           <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">Built for any business with customers on WhatsApp</h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
             Reciva AI is configured to your business, so it fits your niche from day one.
           </p>
-        </div>
+        </Reveal>
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {useCases.map((u, i) => (
-            <div key={u.title} className={`${useCaseColors[i]} relative min-h-[200px] overflow-hidden rounded-2xl p-8`}>
+            <Reveal key={u.title} delay={i * 100} className={`${useCaseColors[i]} relative min-h-[200px] overflow-hidden rounded-2xl p-8`}>
               <h3 className="text-xl font-bold text-white">{u.title}</h3>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/70">{u.body}</p>
               <div className="pointer-events-none absolute right-4 bottom-4 text-white/15">
                 <FeatureIcon name={u.icon} className="[&_svg]:h-20 [&_svg]:w-20" />
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -228,7 +244,7 @@ export default function Home() {
       <section className="border-t border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div>
+            <Reveal from="left">
               <span className="eyebrow text-[11px] text-brand-600">Why Reciva AI</span>
               <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">A WhatsApp AI receptionist that feels human</h2>
               <div className="mt-10">
@@ -246,72 +262,76 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="flex justify-center">
+            </Reveal>
+            <Reveal from="right" delay={150} className="flex justify-center">
               <LeadNotification />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-3xl px-5 py-20">
-        <div className="text-center">
+        <Reveal className="text-center">
           <span className="eyebrow text-[11px] text-brand-600">FAQ</span>
           <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">Questions, answered</h2>
-        </div>
+        </Reveal>
         <div className="mt-10 divide-y divide-zinc-200 dark:divide-zinc-800">
-          {faqs.map((f) => (
-            <details key={f.q} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold">
-                {f.q}
-                <span className="text-brand-600 transition group-open:rotate-45">＋</span>
-              </summary>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {f.a}
-                {f.q.includes("data") && (
-                  <>
-                    {" "}
-                    <Link href="/privacy" className="font-medium text-brand-600 hover:underline">Privacy Policy</Link>
-                    {" · "}
-                    <Link href="/data-deletion" className="font-medium text-brand-600 hover:underline">Data Deletion</Link>.
-                  </>
-                )}
-              </p>
-            </details>
+          {faqs.map((f, i) => (
+            <Reveal key={f.q} delay={i * 60}>
+              <details className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-semibold">
+                  {f.q}
+                  <span className="text-brand-600 transition group-open:rotate-45">＋</span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {f.a}
+                  {f.q.includes("data") && (
+                    <>
+                      {" "}
+                      <Link href="/privacy" className="font-medium text-brand-600 hover:underline">Privacy Policy</Link>
+                      {" · "}
+                      <Link href="/data-deletion" className="font-medium text-brand-600 hover:underline">Data Deletion</Link>.
+                    </>
+                  )}
+                </p>
+              </details>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* CTA band */}
       <section className="mx-auto max-w-6xl px-5 py-20">
-        <div className="overflow-hidden rounded-3xl bg-slate-900 px-8 py-14 text-center sm:px-16">
-          <div className="mx-auto mb-5 flex justify-center">
-            <ReciaMark className="text-white" />
+        <Reveal>
+          <div className="overflow-hidden rounded-3xl bg-slate-900 px-8 py-14 text-center sm:px-16">
+            <div className="mx-auto mb-5 flex justify-center">
+              <ReciaMark className="text-white" />
+            </div>
+            <h2 className="display text-3xl text-white sm:text-[2.5rem]">
+              Ready to stop missing customers?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base text-zinc-300">
+              See Reciva AI in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href={site.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full rounded-full bg-brand-500 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-600 sm:w-auto"
+              >
+                Book a demo
+              </a>
+              <Link
+                href="/contact"
+                className="w-full rounded-full border border-white/25 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
+              >
+                Contact us
+              </Link>
+            </div>
           </div>
-          <h2 className="display text-3xl text-white sm:text-[2.5rem]">
-            Ready to stop missing customers?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-zinc-300">
-            See Reciva AI in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full rounded-full bg-brand-500 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-600 sm:w-auto"
-            >
-              Book a demo
-            </a>
-            <Link
-              href="/contact"
-              className="w-full rounded-full border border-white/25 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
-            >
-              Contact us
-            </Link>
-          </div>
-        </div>
+        </Reveal>
       </section>
     </>
   );
