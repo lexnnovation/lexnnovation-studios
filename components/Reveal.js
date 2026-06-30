@@ -6,10 +6,6 @@ export default function Reveal({ children, className = "", delay = 0, from = "bo
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setVisible(true);
-      return;
-    }
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -35,6 +31,7 @@ export default function Reveal({ children, className = "", delay = 0, from = "bo
   return (
     <div
       ref={ref}
+      data-reveal=""
       className={`transition-all duration-700 ease-out ${
         visible ? "opacity-100 translate-x-0 translate-y-0" : hiddenClass
       } ${className}`}
