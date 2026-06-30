@@ -16,7 +16,7 @@ export default function OgImage() {
           alignItems: "flex-start",
           justifyContent: "flex-end",
           padding: "72px 80px",
-          background: "linear-gradient(145deg, #0f172a 0%, #0a1f14 100%)",
+          background: "#ffffff",
           position: "relative",
           fontFamily: "system-ui, -apple-system, sans-serif",
         }}
@@ -25,13 +25,13 @@ export default function OgImage() {
         <div
           style={{
             position: "absolute",
-            top: "-80px",
+            top: "-60px",
             right: "-60px",
-            width: "560px",
-            height: "560px",
+            width: "500px",
+            height: "500px",
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(16,185,129,0.22) 0%, transparent 68%)",
+              "radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -63,7 +63,7 @@ export default function OgImage() {
           </div>
           <span
             style={{
-              color: "white",
+              color: "#0f172a",
               fontSize: "34px",
               fontWeight: "800",
               letterSpacing: "-0.5px",
@@ -86,7 +86,7 @@ export default function OgImage() {
             style={{
               fontSize: "76px",
               fontWeight: "900",
-              color: "white",
+              color: "#0f172a",
               lineHeight: 0.95,
               letterSpacing: "-0.03em",
             }}
@@ -97,7 +97,7 @@ export default function OgImage() {
             style={{
               fontSize: "76px",
               fontWeight: "900",
-              color: "#34d399",
+              color: "#059669",
               lineHeight: 0.95,
               letterSpacing: "-0.03em",
             }}
@@ -110,7 +110,7 @@ export default function OgImage() {
         <span
           style={{
             fontSize: "27px",
-            color: "#94a3b8",
+            color: "#64748b",
             fontWeight: "400",
           }}
         >
@@ -125,13 +125,13 @@ export default function OgImage() {
             right: "80px",
             display: "flex",
             alignItems: "center",
-            background: "rgba(255,255,255,0.06)",
-            border: "1px solid rgba(255,255,255,0.11)",
+            background: "#f1f5f9",
+            border: "1px solid #e2e8f0",
             borderRadius: "100px",
             padding: "10px 22px",
           }}
         >
-          <span style={{ color: "#64748b", fontSize: "20px" }}>
+          <span style={{ color: "#94a3b8", fontSize: "20px" }}>
             lexnnovation.com
           </span>
         </div>
