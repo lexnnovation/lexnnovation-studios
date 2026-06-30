@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# internal AI tooling context — not for public repos
+AGENTS.md
+CLAUDE.md
+docs/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
