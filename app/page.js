@@ -9,8 +9,6 @@ import {
   faqs,
 } from "@/lib/site";
 import { ReciaMark, FeatureIcon } from "@/components/Icons";
-import ObfuscatedEmail from "@/components/ObfuscatedEmail";
-
 const steps = [
   { n: "01", title: "Customer messages on WhatsApp", body: "They reach out on the channel they already use — no app, no friction." },
   { n: "02", title: "Reciva chats and answers", body: "It replies naturally, answers questions about your business, and keeps the conversation flowing." },
@@ -81,12 +79,14 @@ export default function Home() {
               every lead, 24/7. So your business keeps selling, even when you're off the clock.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ObfuscatedEmail
-                subject="Reciva demo request"
+              <a
+                href={site.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full bg-brand-600 px-7 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
               >
                 Book a demo
-              </ObfuscatedEmail>
+              </a>
               <Link
                 href="/#how-it-works"
                 className="rounded-full border border-zinc-300 px-7 py-3 text-center text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
@@ -227,15 +227,17 @@ export default function Home() {
             Ready to stop missing customers?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-zinc-300">
-            See Reciva in action. Email us and we'll set up your WhatsApp AI receptionist for your business.
+            See Reciva in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <ObfuscatedEmail
-              subject="Reciva demo request"
+            <a
+              href={site.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full rounded-full bg-brand-500 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-600 sm:w-auto"
             >
               Book a demo
-            </ObfuscatedEmail>
+            </a>
             <Link
               href="/contact"
               className="w-full rounded-full border border-white/25 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"

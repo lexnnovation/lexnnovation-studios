@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
+import { FeatureIcon } from "@/components/Icons";
 
 export const metadata = {
   title: "Contact",
@@ -11,11 +12,11 @@ export default function ContactPage() {
     <div className="mx-auto max-w-3xl px-5 py-16">
       <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Let's talk</h1>
       <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-        Want to see the WhatsApp AI Receptionist in action, or build something custom? Email us —
-        we usually reply fast.
+        Want to see the WhatsApp AI Receptionist in action, or build something custom? Reach us by
+        email or WhatsApp — we usually reply fast.
       </p>
 
-      <div className="mt-10">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {/* Email (obfuscated) */}
         <div className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800">
           <div className="text-sm font-semibold text-zinc-500">Email</div>
@@ -29,22 +30,24 @@ export default function ContactPage() {
             Send email
           </ObfuscatedEmail>
         </div>
-      </div>
 
-      <div className="mt-10 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
-        <h2 className="font-display text-base font-semibold">Lexnnovation Studios</h2>
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{site.location}</p>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-          Founder:{" "}
+        {/* WhatsApp */}
+        <div className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <div className="text-sm font-semibold text-zinc-500">WhatsApp</div>
+          <div className="mt-1 font-display text-lg font-semibold">{site.phoneObfuscated}</div>
+          <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Message us directly on WhatsApp to book a demo or ask a quick question.
+          </p>
           <a
-            href="https://x.com/lexnnovation"
+            href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-brand-600 transition hover:underline"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700"
           >
-            Lexnnovation
+            <FeatureIcon name="whatsapp" className="[&_svg]:h-4 [&_svg]:w-4" />
+            Message on WhatsApp
           </a>
-        </p>
+        </div>
       </div>
     </div>
   );

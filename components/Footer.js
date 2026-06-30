@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { site, legalLinks, socials } from "@/lib/site";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
+import { XIcon, LinkedInIcon } from "@/components/Icons";
+
+const socialIcons = { x: XIcon, linkedin: LinkedInIcon };
 
 export default function Footer() {
   return (
@@ -42,11 +45,14 @@ export default function Footer() {
               </li>
             </ul>
             <div className="mt-4 flex gap-4">
-              {socials.map((s) => (
-                <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" className="text-sm text-zinc-500 transition hover:text-brand-600">
-                  {s.label}
-                </a>
-              ))}
+              {socials.map((s) => {
+                const Icon = socialIcons[s.icon];
+                return (
+                  <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="text-zinc-500 transition hover:text-brand-600">
+                    <Icon />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
