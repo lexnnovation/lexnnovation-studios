@@ -33,11 +33,13 @@ export const metadata = {
     siteName: site.name,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
+    images: [{ url: "/og.png" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
+    images: ["/og.png"],
   },
   alternates: { canonical: site.url },
 };
