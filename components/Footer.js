@@ -18,7 +18,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Software development & AI engineering studio. We build Reciva AI — our AI receptionist —
+              Software Development & AI Automation Studio. We build Reciva AI — our AI receptionist —
               and custom software for businesses in Ghana and beyond.
             </p>
             <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-500">{site.location}</p>
