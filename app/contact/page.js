@@ -26,7 +26,7 @@ export default function ContactPage() {
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             For demos, project enquiries, partnerships, or support.
           </p>
-          <ObfuscatedEmail subject="Reciva demo request" className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700">
+          <ObfuscatedEmail subject="Reciva AI demo request" className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700">
             Send email
           </ObfuscatedEmail>
         </div>

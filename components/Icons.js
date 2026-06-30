@@ -1,4 +1,4 @@
-// Reciva wordmark logo (rounded square mark + name). Recreated from the brand guide.
+// Reciva AI wordmark logo (rounded square mark + name). Recreated from the brand guide.
 export function ReciaMark({ className = "", showName = true }) {
   return (
     <span className={`inline-flex items-center gap-2 ${className}`}>
@@ -9,7 +9,7 @@ export function ReciaMark({ className = "", showName = true }) {
       >
         R
       </span>
-      {showName && <span className="font-display text-xl font-bold tracking-tight">Reciva</span>}
+      {showName && <span className="font-display text-xl font-bold tracking-tight">Reciva AI</span>}
     </span>
   );
 }

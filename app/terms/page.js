@@ -26,7 +26,7 @@ export default function TermsPage() {
 
       <h3>2.1 Account suspension and Meta compliance</h3>
       <p>
-        We reserve the right to instantly terminate or suspend access to Reciva if a business tenant
+        We reserve the right to instantly terminate or suspend access to Reciva AI if a business tenant
         violates the Meta WhatsApp Commerce Policy, uses the tool to distribute automated spam, or
         breaches local regulatory messaging frameworks.
       </p>
@@ -59,7 +59,7 @@ export default function TermsPage() {
 
       <h3>6.1 Conversational AI accuracy</h3>
       <p>
-        Reciva is powered by advanced Large Language Models (LLMs). You acknowledge that AI responses
+        Reciva AI is powered by advanced Large Language Models (LLMs). You acknowledge that AI responses
         are generative and contextual. {site.name} provides no warranties regarding absolute textual
         accuracy and shall not be held liable for system hallucinations, incorrect price generation,
         or automated booking discrepancies. The business tenant retains final oversight over all
