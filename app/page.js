@@ -9,12 +9,58 @@ import {
   faqs,
 } from "@/lib/site";
 import { ReciaMark, FeatureIcon } from "@/components/Icons";
+const useCaseColors = [
+  "bg-slate-900 dark:bg-slate-800",
+  "bg-brand-600",
+  "bg-emerald-900 dark:bg-emerald-800",
+  "bg-zinc-800 dark:bg-zinc-700",
+];
+
 const steps = [
   { n: "01", title: "Customer messages on WhatsApp", body: "They reach out on the channel they already use — no app, no friction." },
-  { n: "02", title: "Reciva chats and answers", body: "It replies naturally, answers questions about your business, and keeps the conversation flowing." },
+  { n: "02", title: "Reciva AI chats and answers", body: "It replies naturally, answers questions about your business, and keeps the conversation flowing." },
   { n: "03", title: "It qualifies and captures the lead", body: "Through a smart question flow, it collects what matters and saves the lead automatically." },
   { n: "04", title: "You step in to close", body: "A qualified lead lands with you in real time — ready to seal the deal." },
 ];
+
+function LeadNotification() {
+  return (
+    <div className="mx-auto w-full max-w-xs">
+      <div className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-xl dark:border-zinc-700 dark:bg-zinc-900">
+        <div className="flex items-start gap-3">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500 font-display text-sm font-bold text-white">
+            KA
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold">New lead captured</span>
+              <span className="h-2 w-2 rounded-full bg-brand-500" />
+            </div>
+            <div className="text-xs text-zinc-500">Kofi Agyemang · just now</div>
+          </div>
+        </div>
+        <dl className="mt-4 space-y-2 text-xs">
+          <div className="flex gap-2">
+            <dt className="w-20 shrink-0 font-semibold text-zinc-900 dark:text-zinc-100">Interest</dt>
+            <dd className="text-zinc-500">2-bed apartment, East Legon</dd>
+          </div>
+          <div className="flex gap-2">
+            <dt className="w-20 shrink-0 font-semibold text-zinc-900 dark:text-zinc-100">Budget</dt>
+            <dd className="text-zinc-500">$1,200 / month</dd>
+          </div>
+          <div className="flex gap-2">
+            <dt className="w-20 shrink-0 font-semibold text-zinc-900 dark:text-zinc-100">Timeline</dt>
+            <dd className="text-zinc-500">Next month</dd>
+          </div>
+        </dl>
+        <div className="mt-4 rounded-lg bg-brand-50 px-3 py-2 text-xs font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">
+          ✓ Qualified · ready for your follow-up
+        </div>
+      </div>
+      <p className="mt-3 text-center text-xs text-zinc-400">Captured while you were away</p>
+    </div>
+  );
+}
 
 function ChatMockup() {
   const bubbles = [
@@ -28,7 +74,7 @@ function ChatMockup() {
       <div className="flex items-center gap-3 rounded-t-3xl bg-slate-900 px-4 py-3 text-white">
         <ReciaMark showName={false} />
         <div className="leading-tight">
-          <div className="text-sm font-semibold">Reciva</div>
+          <div className="text-sm font-semibold">Reciva AI</div>
           <div className="text-xs text-brand-400">online</div>
         </div>
       </div>
@@ -60,13 +106,13 @@ function ChatMockup() {
 export default function Home() {
   return (
     <>
-      {/* Hero — category foregrounded: WhatsApp AI Receptionist */}
-      <section className="relative overflow-hidden">
+      {/* Hero — pulled up by mt-16 so its bg extends behind the fixed transparent header */}
+      <section className="relative -mt-16 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_70%_0%,rgba(16,185,129,0.14),transparent)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:py-24 lg:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-28 sm:pb-24 sm:pt-36 lg:grid-cols-2">
           <div>
             <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[11px] text-brand-700 dark:border-brand-800 dark:bg-brand-800/20 dark:text-brand-400">
-              Reciva · by Lexnnovation Studios
+              Reciva AI · by Lexnnovation Studios
             </span>
             <h1 className="display mt-6 text-[2.75rem] sm:text-6xl lg:text-[4.25rem]">
               Your{" "}
@@ -74,7 +120,7 @@ export default function Home() {
               that never sleeps.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva</strong> — it
+              Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — it
               chats with your customers on WhatsApp, answers their questions, qualifies them, and captures
               every lead, 24/7. So your business keeps selling, even when you're off the clock.
             </p>
@@ -110,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What Reciva does — 3-up */}
+      {/* What Reciva AI does — 3-up */}
       <section id="reciva" className="mx-auto max-w-6xl px-5 py-20">
         <div className="max-w-2xl">
           <ReciaMark />
@@ -130,60 +176,80 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How it works */}
-      <section id="how-it-works" className="border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/40">
+      {/* How it works — brand-green horizontal timeline */}
+      <section id="how-it-works" className="bg-brand-600">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-[11px] text-brand-600">How it works</span>
-            <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">From first message to closed deal</h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">Four steps. No new tools for you or your customers.</p>
+          <div className="text-center">
+            <span className="eyebrow text-[11px] text-brand-100">How it works</span>
+            <h2 className="display mt-3 text-3xl text-white sm:text-[2.5rem]">From first message to closed deal</h2>
+            <p className="mt-4 text-lg text-brand-100">Four steps. No new tools for you or your customers.</p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
-              <div key={s.n} className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950">
-                <div className="display text-2xl text-brand-600">{s.n}</div>
-                <h3 className="mt-3 text-base font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{s.body}</p>
-              </div>
-            ))}
+          <div className="relative mt-16">
+            {/* connector line — visible on lg only */}
+            <div className="absolute top-5 left-0 right-0 hidden h-px bg-white/30 lg:block" />
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+              {steps.map((s) => (
+                <div key={s.n} className="border-l-2 border-white/40 pl-5 lg:border-none lg:pl-0">
+                  <div className="relative z-10 mb-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-600 ring-2 ring-white">
+                    <span className="display text-sm text-white">{s.n}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-100">{s.body}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Who it's for — use cases */}
+      {/* Who it's for — bold coloured mosaic */}
       <section id="use-cases" className="mx-auto max-w-6xl px-5 py-20">
         <div className="max-w-2xl">
           <span className="eyebrow text-[11px] text-brand-600">Who it's for</span>
           <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">Built for any business with customers on WhatsApp</h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            Reciva is configured to your business, so it fits your niche from day one.
+            Reciva AI is configured to your business, so it fits your niche from day one.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {useCases.map((u) => (
-            <div key={u.title} className="rounded-2xl border border-zinc-200 p-6 dark:border-zinc-800">
-              <FeatureIcon name={u.icon} className="inline-grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600 [&_svg]:h-6 [&_svg]:w-6 dark:bg-brand-800/20 dark:text-brand-400" />
-              <h3 className="mt-4 text-lg font-bold">{u.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{u.body}</p>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          {useCases.map((u, i) => (
+            <div key={u.title} className={`${useCaseColors[i]} relative min-h-[200px] overflow-hidden rounded-2xl p-8`}>
+              <h3 className="text-xl font-bold text-white">{u.title}</h3>
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/70">{u.body}</p>
+              <div className="pointer-events-none absolute right-4 bottom-4 text-white/15">
+                <FeatureIcon name={u.icon} className="[&_svg]:h-20 [&_svg]:w-20" />
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Why Reciva — value pillars */}
-      <section className="border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/40">
+      {/* Why Reciva AI — split layout: pillars left, lead notification right */}
+      <section className="border-t border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <div className="max-w-2xl">
-            <span className="eyebrow text-[11px] text-brand-600">Why Reciva</span>
-            <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">An AI receptionist that feels human</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {valuePillars.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950">
-                <h3 className="text-lg font-bold">{p.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{p.body}</p>
+          <div className="grid items-center gap-16 lg:grid-cols-2">
+            <div>
+              <span className="eyebrow text-[11px] text-brand-600">Why Reciva AI</span>
+              <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">A WhatsApp AI receptionist that feels human</h2>
+              <div className="mt-10">
+                {valuePillars.map((p, i) => (
+                  <div
+                    key={p.title}
+                    className={
+                      i === 0
+                        ? "mb-3 rounded-r-xl border-l-4 border-brand-500 bg-brand-50 py-4 pl-5 dark:bg-brand-900/20"
+                        : "border-b border-zinc-200 py-5 last:border-0 dark:border-zinc-800"
+                    }
+                  >
+                    <h3 className={`text-base font-bold text-zinc-900 ${i !== 0 ? "dark:text-zinc-100" : ""}`}>{p.title}</h3>
+                    <p className={`mt-1 text-sm leading-relaxed text-zinc-600 ${i === 0 ? "dark:text-brand-300" : "dark:text-zinc-300"}`}>{p.body}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="flex justify-center">
+              <LeadNotification />
+            </div>
           </div>
         </div>
       </section>
@@ -227,7 +293,7 @@ export default function Home() {
             Ready to stop missing customers?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-zinc-300">
-            See Reciva in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
+            See Reciva AI in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
