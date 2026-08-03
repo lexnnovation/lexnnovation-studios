@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks, site } from "@/lib/site";
+import { navLinks } from "@/lib/site";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 function SunIcon(props) {
   return (
@@ -116,14 +117,12 @@ export default function Header() {
             >
               {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
             </button>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <ObfuscatedEmail
+              subject="Book a demo"
               className="hidden rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 sm:inline-block"
             >
               Book a demo
-            </a>
+            </ObfuscatedEmail>
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
@@ -186,14 +185,12 @@ export default function Header() {
               <span>{isDark ? "Light mode" : "Dark mode"}</span>
               {isDark ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
             </button>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
+            <ObfuscatedEmail
+              subject="Book a demo"
               className="rounded-full bg-brand-600 px-5 py-4 text-center text-base font-semibold text-white transition hover:bg-brand-700"
             >
               Book a demo
-            </a>
+            </ObfuscatedEmail>
           </div>
         </div>
       </div>

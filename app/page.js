@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  site,
   product,
   whatItDoes,
   useCases,
@@ -10,6 +9,7 @@ import {
 } from "@/lib/site";
 import { ReciaMark, FeatureIcon } from "@/components/Icons";
 import Reveal from "@/components/Reveal";
+import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 const useCaseColors = [
   "bg-slate-900 dark:bg-slate-800",
@@ -139,14 +139,12 @@ export default function Home() {
               className="mt-8 reveal flex flex-col gap-3 sm:flex-row"
               style={{ animationDelay: "0.3s" }}
             >
-              <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
+              <ObfuscatedEmail
+                subject="Book a demo"
                 className="rounded-full bg-brand-600 px-7 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
               >
                 Book a demo
-              </a>
+              </ObfuscatedEmail>
               <Link
                 href="/#how-it-works"
                 className="rounded-full border border-zinc-300 px-7 py-3 text-center text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
@@ -312,17 +310,15 @@ export default function Home() {
               Ready to stop missing customers?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-zinc-300">
-              See Reciva AI in action. Message us on WhatsApp and we'll set up your AI receptionist for your business.
+              See Reciva AI in action. Email us and we'll set up your AI receptionist for your business.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href={site.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
+              <ObfuscatedEmail
+                subject="Book a demo"
                 className="w-full rounded-full bg-brand-500 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-600 sm:w-auto"
               >
                 Book a demo
-              </a>
+              </ObfuscatedEmail>
               <Link
                 href="/contact"
                 className="w-full rounded-full border border-white/25 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-white/10 sm:w-auto"
