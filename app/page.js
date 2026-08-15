@@ -146,13 +146,13 @@ export default function Home() {
           >
             <ObfuscatedEmail
               subject="Book a demo"
-              className="rounded-full bg-zinc-950 px-7 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+              className="rounded-full bg-zinc-950 px-9 py-4 text-center text-base font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
               Book a demo
             </ObfuscatedEmail>
             <Link
               href="/#how-it-works"
-              className="rounded-full border border-zinc-300 px-7 py-3 text-center text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
+              className="rounded-full border border-zinc-300 px-9 py-4 text-center text-base font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
             >
               See how it works
             </Link>
@@ -182,7 +182,7 @@ export default function Home() {
       <section id="reciva" className="mx-auto max-w-6xl px-5 py-20">
         <Reveal className="max-w-2xl">
           <ReciaMark />
-          <h2 className="display mt-5 text-3xl sm:text-[2.5rem]">
+          <h2 className="display mt-5 text-4xl sm:text-6xl">
             What a {product.category} does
           </h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">{product.description}</p>
@@ -228,7 +228,7 @@ export default function Home() {
       <section id="use-cases" className="mx-auto max-w-6xl px-5 py-20">
         <Reveal className="max-w-2xl">
           <span className="eyebrow text-[11px] text-brand-600">Who it's for</span>
-          <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">Built for any business with customers on WhatsApp</h2>
+          <h2 className="display mt-3 text-4xl sm:text-6xl">Built for any business with customers on WhatsApp</h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
             Reciva AI is configured to your business, so it fits your niche from day one.
           </p>
@@ -252,7 +252,7 @@ export default function Home() {
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <Reveal from="left">
               <span className="eyebrow text-[11px] text-brand-600">Why Reciva AI</span>
-              <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">A WhatsApp AI receptionist that feels human</h2>
+              <h2 className="display mt-3 text-4xl sm:text-6xl">A WhatsApp AI receptionist that feels human</h2>
               <div className="mt-10">
                 {valuePillars.map((p, i) => (
                   <div
@@ -280,7 +280,7 @@ export default function Home() {
       <section id="faq" className="mx-auto max-w-3xl px-5 py-20">
         <Reveal className="text-center">
           <span className="eyebrow text-[11px] text-brand-600">FAQ</span>
-          <h2 className="display mt-3 text-3xl sm:text-[2.5rem]">Questions, answered</h2>
+          <h2 className="display mt-3 text-4xl sm:text-6xl">Questions, answered</h2>
         </Reveal>
         <div className="mt-10 divide-y divide-zinc-200 dark:divide-zinc-800">
           {faqs.map((f, i) => (

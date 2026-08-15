@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { site, navLinks } from "@/lib/site";
+import { navLinks } from "@/lib/site";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 function SunIcon(props) {
@@ -31,12 +31,9 @@ function Logo({ onClick }) {
       onClick={onClick}
     >
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-zinc-950 font-bold text-white dark:bg-white dark:text-zinc-950">L</span>
-      {/* Full name at sm+; short name only below sm, where there isn't room
-          beside the theme toggle + hamburger without wrapping. */}
-      <span className="hidden sm:inline">
+      <span>
         Lexnnovation<span className="text-brand-600"> Studios</span>
       </span>
-      <span className="sm:hidden">{site.shortName}</span>
     </Link>
   );
 }
@@ -79,8 +76,8 @@ export default function Header() {
       {/* Floating pill nav — always visible with its own surface, not scroll-transparent.
           backdrop-blur only on md+: WebKit/Chrome mobile compositing breaks button
           hit-testing inside backdrop-filter elements. */}
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-        <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-zinc-200/70 bg-white px-5 py-3 shadow-sm shadow-zinc-900/5 dark:border-zinc-800/70 dark:bg-zinc-900 md:bg-white/90 md:backdrop-blur md:dark:bg-zinc-900/90">
+      <header className="fixed inset-x-0 top-0 z-50 px-2 pt-4 sm:px-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-zinc-200/70 bg-white px-3 py-3 shadow-sm shadow-zinc-900/5 dark:border-zinc-800/70 dark:bg-zinc-900 sm:px-5 md:bg-white/90 md:backdrop-blur md:dark:bg-zinc-900/90">
           <Logo onClick={() => setOpen(false)} />
 
           <nav className="hidden items-center gap-8 lg:flex">
@@ -102,7 +99,7 @@ export default function Header() {
             })}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <button
               onClick={toggleTheme}
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
