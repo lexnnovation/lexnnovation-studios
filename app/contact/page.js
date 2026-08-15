@@ -26,7 +26,7 @@ export default function ContactPage() {
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
             For demos, project enquiries, partnerships, or support.
           </p>
-          <ObfuscatedEmail subject="Reciva AI demo request" className="mt-4 inline-block rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700">
+          <ObfuscatedEmail subject="Reciva AI demo request" className="mt-4 inline-block rounded-full bg-zinc-950 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200">
             Send email
           </ObfuscatedEmail>
         </div>
@@ -42,7 +42,7 @@ export default function ContactPage() {
             href={site.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-700"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-zinc-950 px-5 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
           >
             <FeatureIcon name="whatsapp" className="[&_svg]:h-4 [&_svg]:w-4" />
             Message on WhatsApp

@@ -10,6 +10,7 @@ import {
 import { ReciaMark, FeatureIcon } from "@/components/Icons";
 import Reveal from "@/components/Reveal";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
+import ChatMockup from "@/components/ChatMockup";
 
 const useCaseColors = [
   "bg-slate-900 dark:bg-slate-800",
@@ -64,98 +65,104 @@ function LeadNotification() {
   );
 }
 
-function ChatMockup() {
-  const bubbles = [
-    { from: "them", text: "Hi, do you have 2-bedroom apartments in East Legon?" },
-    { from: "reciva", text: "Hi! 👋 Yes, we do. What's your budget and move-in date?" },
-    { from: "them", text: "Around $1,200/month, next month." },
-    { from: "reciva", text: "Perfect — noted ✅ Can I get your name so our team sends you options?" },
-  ];
-  return (
-    <div className="mx-auto w-full max-w-sm rounded-3xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="flex items-center gap-3 rounded-t-3xl bg-slate-900 px-4 py-3 text-white">
-        <ReciaMark showName={false} />
-        <div className="leading-tight">
-          <div className="text-sm font-semibold">Reciva AI</div>
-          <div className="text-xs text-brand-400">online</div>
-        </div>
-      </div>
-      <div className="space-y-3 px-4 py-5">
-        {bubbles.map((b, i) =>
-          b.from === "them" ? (
-            <div
-              key={i}
-              className="reveal max-w-[80%] rounded-2xl rounded-tl-sm bg-zinc-100 px-3 py-2 text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
-              style={{ animationDelay: `${0.15 + i * 0.45}s` }}
-            >
-              {b.text}
-            </div>
-          ) : (
-            <div
-              key={i}
-              className="reveal ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-brand-600 px-3 py-2 text-sm text-white"
-              style={{ animationDelay: `${0.15 + i * 0.45}s` }}
-            >
-              {b.text}
-            </div>
-          )
-        )}
-      </div>
-    </div>
-  );
-}
+// Three verticals, three real conversation shapes — shows the product handles
+// different kinds of businesses, not just one script.
+// Times deliberately land late-night / early-morning across the three cards —
+// a quiet reinforcement of "never sleeps" without saying it again in copy.
+const heroChats = [
+  {
+    business: "East Legon Realty",
+    label: "Real estate",
+    bubbles: [
+      { from: "them", text: "Hi, do you have 2-bedroom apartments in East Legon?", time: "11:47 PM" },
+      { from: "reciva", text: "Yes, we've got a few available! What's your budget and move-in date?", time: "11:47 PM" },
+      { from: "them", text: "Around $1,200/month, next month.", time: "11:52 PM" },
+      { from: "reciva", text: "Perfect, noted ✅ Can I get your name so our team sends you options?", time: "11:52 PM" },
+    ],
+  },
+  {
+    business: "Osu Sneaker Co.",
+    label: "Retail & vendors",
+    bubbles: [
+      { from: "them", text: "Do you have the black sneakers in size 42?", time: "2:14 AM" },
+      { from: "reciva", text: "Size 42 is in stock 🔥 GHS 350 — want me to place the order?", time: "2:14 AM" },
+      { from: "them", text: "Yes please, cash on delivery?", time: "2:19 AM" },
+      { from: "reciva", text: "Sure thing, that works. What's your delivery address?", time: "2:19 AM" },
+    ],
+  },
+  {
+    business: "Bright Smile Dental",
+    label: "Clinics & services",
+    bubbles: [
+      { from: "them", text: "Can I book a dental cleaning this week?", time: "4:32 AM" },
+      { from: "reciva", text: "Of course! We have Thursday 2pm or Friday 10am open — which works?", time: "4:33 AM" },
+      { from: "them", text: "Friday 10am please.", time: "4:36 AM" },
+      { from: "reciva", text: "You're booked 🦷 We'll send a reminder the day before. See you then!", time: "4:36 AM" },
+    ],
+  },
+];
 
 export default function Home() {
   return (
     <>
-      {/* Hero — pulled up by mt-16 so its bg extends behind the fixed transparent header */}
+      {/* Hero — pulled up by mt-16 so its bg extends behind the floating pill nav */}
       <section className="relative -mt-16 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_55%_at_70%_0%,rgba(16,185,129,0.14),transparent)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-28 sm:pb-24 sm:pt-36 lg:grid-cols-2">
-          <div>
-            <span
-              className="eyebrow reveal inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-[11px] text-brand-700 dark:border-brand-800 dark:bg-brand-800/20 dark:text-brand-400"
-              style={{ animationDelay: "0s" }}
-            >
-              Reciva AI · by Lexnnovation Studios
+        <div className="flex flex-col items-center px-5 pb-20 pt-32 text-center sm:px-10 sm:pb-28 sm:pt-44">
+          <span
+            className="eyebrow reveal text-[11px] text-brand-700 dark:text-brand-400"
+            style={{ animationDelay: "0s" }}
+          >
+            Reciva AI · by Lexnnovation Studios
+          </span>
+          <h1 className="display reveal mt-8" style={{ animationDelay: "0.1s" }}>
+            {/* Mobile-only arrangement — separate from tablet/desktop below. */}
+            <span className="block text-6xl sm:hidden">Your</span>
+            <span className="block text-6xl text-brand-600 sm:hidden">WhatsApp AI</span>
+            <span className="block text-6xl text-brand-600 sm:hidden">Receptionist</span>
+            <span className="block text-6xl sm:hidden">that never sleeps – so you can.</span>
+
+            {/* Tablet and up — unchanged. */}
+            <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">
+              Your <span className="text-brand-600">WhatsApp AI</span>
             </span>
-            <h1
-              className="display reveal mt-6 text-[2.75rem] sm:text-6xl lg:text-[4.25rem]"
-              style={{ animationDelay: "0.1s" }}
+            <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">
+              <span className="text-brand-600">Receptionist</span> that
+            </span>
+            <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">never sleeps – so you can.</span>
+          </h1>
+          <p
+            className="mt-8 reveal max-w-2xl text-xl leading-relaxed text-zinc-600 dark:text-zinc-400"
+            style={{ animationDelay: "0.2s" }}
+          >
+            Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — the
+            AI receptionist that replies to your customers on WhatsApp in seconds, asks the right
+            questions, and captures every lead automatically. Wake up to qualified leads instead of
+            missed messages.
+          </p>
+          <div
+            className="mt-10 reveal flex flex-col gap-3 sm:flex-row"
+            style={{ animationDelay: "0.3s" }}
+          >
+            <ObfuscatedEmail
+              subject="Book a demo"
+              className="rounded-full bg-zinc-950 px-7 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
-              Your{" "}
-              <span className="text-brand-600">WhatsApp AI Receptionist</span>{" "}
-              that never sleeps – so you can.
-            </h1>
-            <p
-              className="mt-6 reveal max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
-              style={{ animationDelay: "0.2s" }}
+              Book a demo
+            </ObfuscatedEmail>
+            <Link
+              href="/#how-it-works"
+              className="rounded-full border border-zinc-300 px-7 py-3 text-center text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
             >
-              Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — the
-              AI receptionist that replies to your customers on WhatsApp in seconds, asks the right
-              questions, and captures every lead automatically. Wake up to qualified leads instead of
-              missed messages.
-            </p>
-            <div
-              className="mt-8 reveal flex flex-col gap-3 sm:flex-row"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <ObfuscatedEmail
-                subject="Book a demo"
-                className="rounded-full bg-brand-600 px-7 py-3 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
-              >
-                Book a demo
-              </ObfuscatedEmail>
-              <Link
-                href="/#how-it-works"
-                className="rounded-full border border-zinc-300 px-7 py-3 text-center text-sm font-semibold text-zinc-800 transition hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"
-              >
-                See how it works
-              </Link>
-            </div>
+              See how it works
+            </Link>
           </div>
-          <div className="reveal" style={{ animationDelay: "0.2s" }}>
-            <ChatMockup />
+        </div>
+        <div className="mx-auto max-w-6xl px-5 pb-20 sm:pb-28">
+          <div className="reveal grid gap-8 sm:grid-cols-3" style={{ animationDelay: "0.3s" }}>
+            {heroChats.map((c) => (
+              <ChatMockup key={c.label} business={c.business} label={c.label} bubbles={c.bubbles} />
+            ))}
           </div>
         </div>
       </section>
@@ -316,7 +323,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ObfuscatedEmail
                 subject="Book a demo"
-                className="w-full rounded-full bg-brand-500 px-7 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-600 sm:w-auto"
+                className="w-full rounded-full bg-white px-7 py-3 text-center text-sm font-semibold text-zinc-950 transition hover:bg-zinc-200 sm:w-auto"
               >
                 Book a demo
               </ObfuscatedEmail>

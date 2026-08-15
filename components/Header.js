@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { navLinks } from "@/lib/site";
+import { site, navLinks } from "@/lib/site";
 import ObfuscatedEmail from "@/components/ObfuscatedEmail";
 
 function SunIcon(props) {
@@ -25,11 +25,18 @@ function MoonIcon(props) {
 
 function Logo({ onClick }) {
   return (
-    <Link href="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-tight" onClick={onClick}>
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 font-bold text-white">L</span>
-      <span>
+    <Link
+      href="/"
+      className="flex items-center gap-2 whitespace-nowrap font-display text-lg font-bold tracking-tight"
+      onClick={onClick}
+    >
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-zinc-950 font-bold text-white dark:bg-white dark:text-zinc-950">L</span>
+      {/* Full name at sm+; short name only below sm, where there isn't room
+          beside the theme toggle + hamburger without wrapping. */}
+      <span className="hidden sm:inline">
         Lexnnovation<span className="text-brand-600"> Studios</span>
       </span>
+      <span className="sm:hidden">{site.shortName}</span>
     </Link>
   );
 }
@@ -37,17 +44,9 @@ function Logo({ onClick }) {
 export default function Header() {
   const [theme, setTheme] = useState("light");
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // Lock body scroll + close on Escape while the full-screen menu is open.
@@ -74,23 +73,17 @@ export default function Header() {
 
   const isDark = theme === "dark";
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const showBg = scrolled || !isHome;
 
   return (
     <>
-      {/* backdrop-blur only on md+ — WebKit/Chrome mobile compositing breaks button hit-testing inside backdrop-filter elements */}
-      <header className="fixed inset-x-0 top-0 z-50">
-        {/* Background: always visible on non-home pages; fades in on scroll on home */}
-        <div className={`absolute inset-0 transition-all duration-300 ${
-          showBg
-            ? "border-b border-zinc-200/70 bg-white dark:border-zinc-800/70 dark:bg-zinc-950 md:bg-white/80 md:backdrop-blur md:dark:bg-zinc-950/80"
-            : ""
-        }`} />
-        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      {/* Floating pill nav — always visible with its own surface, not scroll-transparent.
+          backdrop-blur only on md+: WebKit/Chrome mobile compositing breaks button
+          hit-testing inside backdrop-filter elements. */}
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-zinc-200/70 bg-white px-5 py-3 shadow-sm shadow-zinc-900/5 dark:border-zinc-800/70 dark:bg-zinc-900 md:bg-white/90 md:backdrop-blur md:dark:bg-zinc-900/90">
           <Logo onClick={() => setOpen(false)} />
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-8 lg:flex">
             {navLinks.map((l) => {
               const isActive = !l.href.startsWith("/#") && l.href === pathname;
               return (
@@ -119,7 +112,7 @@ export default function Header() {
             </button>
             <ObfuscatedEmail
               subject="Book a demo"
-              className="hidden rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 sm:inline-block"
+              className="hidden rounded-full bg-zinc-950 px-4 py-2 text-sm font-semibold text-white transition hover:bg-zinc-800 sm:inline-block dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
               Book a demo
             </ObfuscatedEmail>
@@ -127,7 +120,7 @@ export default function Header() {
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
-              className="grid h-10 w-10 place-items-center rounded-full text-zinc-700 hover:bg-zinc-100 md:hidden dark:text-zinc-200 dark:hover:bg-zinc-800"
+              className="grid h-10 w-10 place-items-center rounded-full text-zinc-700 hover:bg-zinc-100 lg:hidden dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
               <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M4 7h16M4 12h16M4 17h16" />
@@ -140,7 +133,7 @@ export default function Header() {
       {/* Full-screen mobile menu — sibling of <header>, NOT inside it.
           Uses `hidden` (display:none) when closed so it cannot intercept any touch events. */}
       <div
-        className={`fixed inset-0 z-[200] bg-white dark:bg-zinc-950 md:hidden ${
+        className={`fixed inset-0 z-[200] overflow-y-auto bg-white dark:bg-zinc-950 lg:hidden ${
           open ? "flex flex-col" : "hidden"
         }`}
         aria-hidden={!open}
@@ -187,7 +180,7 @@ export default function Header() {
             </button>
             <ObfuscatedEmail
               subject="Book a demo"
-              className="rounded-full bg-brand-600 px-5 py-4 text-center text-base font-semibold text-white transition hover:bg-brand-700"
+              className="rounded-full bg-zinc-950 px-5 py-4 text-center text-base font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
             >
               Book a demo
             </ObfuscatedEmail>

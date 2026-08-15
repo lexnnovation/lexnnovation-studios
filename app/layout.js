@@ -1,15 +1,16 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Google_Sans_Flex } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site, analytics } from "@/lib/site";
 
-// One cohesive geometric sans for the whole site — set big & heavy for display,
-// regular for body (the look used on q.prestoghana.com).
-const jakarta = Plus_Jakarta_Sans({
+// One variable grotesk for the whole site — its weight axis does the work of
+// two typefaces: black (900) for display, regular (400-500) for body.
+const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  axes: ["opsz", "wdth", "GRAD"],
+  variable: "--font-gsflex",
   display: "swap",
 });
 
@@ -50,8 +51,8 @@ const themeScript = `(function(){try{if(localStorage.getItem('theme')==='dark'){
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${jakarta.variable} h-full`}>
-      <body suppressHydrationWarning className="flex min-h-full flex-col bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+    <html lang="en" suppressHydrationWarning className={`${googleSansFlex.variable} h-full`}>
+      <body suppressHydrationWarning className="flex min-h-full flex-col overflow-x-hidden bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${analytics.gaId}`} strategy="afterInteractive" />
         <Script id="ga-init" strategy="afterInteractive">

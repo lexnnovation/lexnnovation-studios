@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 font-display text-lg font-bold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white">L</span>
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">L</span>
               <span>
                 Lexnnovation<span className="text-brand-600"> Studios</span>
               </span>
