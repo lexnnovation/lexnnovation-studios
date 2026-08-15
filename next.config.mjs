@@ -15,9 +15,9 @@ const isDev = process.env.NODE_ENV === "development";
 // LAN phone testing. Vercel serves the production build, so dev loses nothing by skipping it.
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://www.googletagmanager.com",
+  "img-src 'self' data: blob: https://www.googletagmanager.com https://*.clarity.ms",
   "font-src 'self'",
   "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms",
   "object-src 'none'",
