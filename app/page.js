@@ -125,7 +125,7 @@ export default function Home() {
             >
               Your{" "}
               <span className="text-brand-600">WhatsApp AI Receptionist</span>{" "}
-              that never sleeps — so you can.
+              that never sleeps – so you can.
             </h1>
             <p
               className="mt-6 reveal max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
