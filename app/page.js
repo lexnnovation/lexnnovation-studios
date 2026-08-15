@@ -125,15 +125,16 @@ export default function Home() {
             >
               Your{" "}
               <span className="text-brand-600">WhatsApp AI Receptionist</span>{" "}
-              that never sleeps.
+              that never sleeps — so you can.
             </h1>
             <p
               className="mt-6 reveal max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400"
               style={{ animationDelay: "0.2s" }}
             >
-              Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — it
-              chats with your customers on WhatsApp, answers their questions, qualifies them, and captures
-              every lead, 24/7. So your business keeps selling, even when you're off the clock.
+              Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — the
+              AI receptionist that replies to your customers on WhatsApp in seconds, asks the right
+              questions, and captures every lead automatically. Wake up to qualified leads instead of
+              missed messages.
             </p>
             <div
               className="mt-8 reveal flex flex-col gap-3 sm:flex-row"
