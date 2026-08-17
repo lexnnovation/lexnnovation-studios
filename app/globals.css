@@ -71,3 +71,29 @@ body {
   opacity: 0;
   animation: reveal-up 0.5s ease forwards;
 }
+
+/* Trust strip — two identical badge groups side by side, scrolled left by
+   exactly one group's width (-50%) so the loop reads as endless. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-track > *:nth-child(2) {
+    display: none;
+  }
+}

@@ -167,13 +167,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="border-y border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/40">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-5 py-5 text-center">
-          {trustBadges.map((b) => (
-            <span key={b} className="eyebrow text-[11px] text-zinc-500 dark:text-zinc-400">
-              {b}
-            </span>
+      {/* Trust strip — endless horizontal marquee. Each half repeats the badge
+          list several times so it's always wider than the viewport — otherwise
+          the loop runs out of content and shows a gap before it resets. */}
+      <section className="marquee-viewport overflow-hidden border-y border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/40">
+        <div className="marquee-track flex py-5">
+          {[0, 1].map((half) => (
+            <div key={half} className="flex shrink-0 items-center" aria-hidden={half === 1}>
+              {Array.from({ length: 4 }, (_, rep) =>
+                trustBadges.map((b, i) => (
+                  <span key={`${half}-${rep}-${b}-${i}`} className="flex items-center">
+                    <span className="eyebrow whitespace-nowrap px-4 text-[11px] text-zinc-500 dark:text-zinc-400">
+                      {b}
+                    </span>
+                    <span className="text-zinc-300 dark:text-zinc-700" aria-hidden="true">
+                      •
+                    </span>
+                  </span>
+                ))
+              )}
+            </div>
           ))}
         </div>
       </section>
