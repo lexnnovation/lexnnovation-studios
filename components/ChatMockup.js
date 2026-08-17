@@ -59,7 +59,7 @@ export default function ChatMockup({ business, label, bubbles }) {
         </div>
         <span className="eyebrow ml-auto text-[10px] text-white/50">{label}</span>
       </div>
-      <div className="flex min-h-[220px] flex-col justify-end space-y-3 px-4 py-5">
+      <div className="flex h-80 flex-col justify-end space-y-3 overflow-hidden px-4 py-5">
         {bubbles.slice(0, visibleCount).map((b, i) =>
           b.from === "them" ? (
             <div
