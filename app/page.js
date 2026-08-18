@@ -132,7 +132,7 @@ export default function Home() {
             <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">never sleeps – so you can.</span>
           </h1>
           <p
-            className="mt-8 reveal max-w-2xl text-xl leading-relaxed text-zinc-600 dark:text-zinc-400"
+            className="mt-8 reveal max-w-2xl text-xl leading-relaxed text-zinc-600 dark:text-zinc-400 lg:max-w-4xl"
             style={{ animationDelay: "0.2s" }}
           >
             Meet <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Reciva AI</strong> — the
