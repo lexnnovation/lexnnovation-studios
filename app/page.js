@@ -118,13 +118,13 @@ export default function Home() {
           <h1 className="display reveal mt-8" style={{ animationDelay: "0.1s" }}>
             {/* Mobile-only arrangement — separate from tablet/desktop below. */}
             <span className="block text-6xl sm:hidden">Your</span>
-            <span className="block text-6xl text-brand-600 sm:hidden">WhatsApp AI</span>
+            <span className="block text-6xl text-brand-600 sm:hidden">WhatsApp</span>
             <span className="block text-6xl text-brand-600 sm:hidden">Receptionist</span>
             <span className="block text-6xl sm:hidden">that never sleeps – so you can.</span>
 
             {/* Tablet and up — unchanged. */}
             <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">
-              Your <span className="text-brand-600">WhatsApp AI</span>
+              Your <span className="text-brand-600">WhatsApp</span>
             </span>
             <span className="hidden sm:block sm:text-8xl lg:text-[7.5rem]">
               <span className="text-brand-600">Receptionist</span> that
